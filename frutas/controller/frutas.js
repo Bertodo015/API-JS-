@@ -41,8 +41,8 @@ exports.adicionarFruta = async (req, res) => {
 
 exports.editarFruta = async (req, res) => {
     const fruta = req.headers;
-    if(!fruta.nome) {
-        return res.send({ msg: '[ERRO]: Informar nome' });
+    if(!fruta.nome || fruta.preco) {
+        return res.send({ msg: '[ERRO]: Informar nome e preco' });
     }
     try {
         const frutaEditada = await Frutas.findOneAndUpdate({ nome: fruta.nome }, { preco: fruta.preco });
