@@ -4,6 +4,7 @@
  * npm i express mongoose
  * npm i jsonwebtoken
  * npm i dotenv
+ * npm i bcrypt
  */
 const express = require('express');
 const api = express();
