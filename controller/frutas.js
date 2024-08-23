@@ -41,33 +41,33 @@ exports.adicionarFruta = async (req, res) => {
 
 exports.editarFruta = async (req, res) => {
     const fruta = req.headers;
-    if(!fruta.nome || fruta.preco) {
+    if (!fruta.nome || fruta.preco) {
         return res.send({ msg: '[ERRO]: Informar nome e preco' });
     }
     try {
         const frutaEditada = await Frutas.findOneAndUpdate({ nome: fruta.nome }, { preco: fruta.preco });
-        if(frutaEditada == null)
+        if (frutaEditada == null)
             res.send({ msg: '[AVISO]: Fruta não existe no BD!' })
         else
             res.send({ msg: '[SUCESSO]: Fruta editada' })
-    } catch(erro) {
+    } catch (erro) {
         console.log(erro);
-        res.send({msg: '[ERRO]: Erro ao editar!', detalhes: erro });
+        res.send({ msg: '[ERRO]: Erro ao editar!', detalhes: erro });
     }
 }
 
 exports.removerFruta = async (req, res) => {
     const fruta = req.headers;
-    if(!fruta.nome) 
-        return res.send({ msg: '[ERRO]: Informar nome' });  
+    if (!fruta.nome)
+        return res.send({ msg: '[ERRO]: Informar nome' });
     try {
         const frutaEditada = await Frutas.findOneAndDelete({ nome: fruta.nome });
-        if(frutaEditada == null)
+        if (frutaEditada == null)
             res.send({ msg: '[AVISO]: Fruta não existe no BD!' })
         else
             res.send({ msg: '[SUCESSO]: Fruta removida!' })
-    } catch(erro) {
+    } catch (erro) {
         console.log(erro);
-        res.send({msg: '[ERRO]: Erro ao remover!', detalhes: erro });
+        res.send({ msg: '[ERRO]: Erro ao remover!', detalhes: erro });
     }
 }
